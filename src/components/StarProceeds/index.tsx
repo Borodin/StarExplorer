@@ -7,9 +7,7 @@ import {StarIcon} from "../StarAmount";
 const StarAmountInUSD = ({amount}: { amount: number }) => {
   const [whole, fraction] = (amount * 0.013).toFixed(2).toString().split('.');
   return <span>
-    <StarIcon style={{
-      margin: '0 5px -3px'
-    }}/>
+    <StarIcon/>
     <span style={{
       fontSize: '1.2em',
     }}> {amount}</span>

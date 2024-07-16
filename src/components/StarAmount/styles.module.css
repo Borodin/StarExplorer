@@ -6,16 +6,13 @@
     color: var(--tgui--destructive_background);
 }
 
-.starsAmount{
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
 .star{
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    vertical-align: text-top;
     display: inline-block;
     background-image: url('./star.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
     margin-block: -3px;
 }
