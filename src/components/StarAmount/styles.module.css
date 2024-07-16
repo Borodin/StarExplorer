@@ -1,0 +1,21 @@
+.green {
+    color: var(--tgui--green);
+}
+
+.red {
+    color: var(--tgui--destructive_background);
+}
+
+.starsAmount{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star{
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-image: url('./star.svg');
+    margin-block: -3px;
+}

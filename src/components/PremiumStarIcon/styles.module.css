@@ -1,0 +1,7 @@
+.premiumStar {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-image: url('./premium_star.svg');
+    align-self: flex-end;
+}

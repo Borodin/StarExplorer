@@ -1,0 +1,8 @@
+.fallback{
+    color: white;
+}
+
+.avatar{
+    overflow: hidden;
+    background-image: linear-gradient(oklch(from var(--color) calc(l + 0.2) calc(c + 0.01) h), oklch(from var(--color) calc(l - 0) calc(c + 0.02) h));;
+}

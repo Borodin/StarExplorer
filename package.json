@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@telegram-apps/telegram-ui": "^2.1.5",
+    "classnames": "^2.5.1",
+    "lottie-react": "^2.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript-telegram-bot-api": "^0.1.22",
+    "zustand": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "typescript": "^5.5.3",
+    "util": "^0.12.5"
+  },
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./",
+    "clear": "rm -rf dist/ && rm -rf .parcel-cache/ && rm -rf node_modules/"
+  }
+}
