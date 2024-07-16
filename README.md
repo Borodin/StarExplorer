@@ -1,4 +1,4 @@
-# StarExplorer
+# ⭐️ StarExplorer
 This is a demo application designed to showcase transactions using the Telegram star-based currency for a specific bot. It leverages the [typescript-telegram-bot-api](https://github.com/Borodin/typescript-telegram-bot-api) to fetch data from the `.getStarTransactions()` method and display it in a list format.
 
 ## How to Use

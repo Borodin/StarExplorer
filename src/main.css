@@ -5,3 +5,14 @@ body {
     width: 100%;
     background-color: #efeff4;
 }
+
+a {
+    text-decoration: none;
+    color: var(--tgui--primary_code_highlight);
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: .5px;
+    text-underline-offset: 3px;
+}

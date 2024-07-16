@@ -78,7 +78,8 @@ export const App = () => {
         {botInfo ? <TransactionList/> :
           <Placeholder
             header="Transactions"
-            description="Connect your Telegram Bot to see transactions">
+            description={<>Connect your Telegram Bot to see transactions<br/>
+              <a href="https://github.com/Borodin/StarExplorer" target="_blank">Learn more</a></>}>
             <Lottie style={{width: 160, height: 160}} animationData={duckSticker} loop={true}/>
           </Placeholder>}
       </List>

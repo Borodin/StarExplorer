@@ -8,7 +8,7 @@ export const StarIcon = () => {
 
 export const StarAmount = ({amount}: { amount: number }) => {
   const positive = amount >= 0;
-  return <span className={classNames([style.starsAmount, positive ? style.green : styles.red])}>
+  return <span className={classNames([positive ? style.green : styles.red])}>
     <Text weight="2">{positive ? '+' : '-'}{Math.abs(amount)}</Text> <StarIcon/>
   </span>
 }
