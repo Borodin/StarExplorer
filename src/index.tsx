@@ -1,5 +1,5 @@
-import css from '@telegram-apps/telegram-ui/dist/styles.css';
-console.log(css);
+import * as style from '@telegram-apps/telegram-ui/dist/styles.css';
+Object.keys(style); // for parcel
 import './main.css';
 import React from 'react';
 

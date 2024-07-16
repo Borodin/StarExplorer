@@ -1,5 +1,5 @@
 import {useAppStore} from "../../store";
-import {Section, ButtonCell} from "@telegram-apps/telegram-ui";
+import {Section} from "@telegram-apps/telegram-ui";
 import React from "react";
 import {TransactionItem} from "../TransactionItem";
 import {StarProceeds} from "../StarProceeds";
@@ -11,14 +11,13 @@ export const TransactionList = () => {
   }
   return (
     <>
-      <StarProceeds transactions={starsTransactions.transactions}/>
+      <StarProceeds transactions={starsTransactions}/>
       <Section header="All transactions">
-        {starsTransactions?.transactions
+        {starsTransactions
           .sort((a, b) => b.date - a.date)
           .map((transaction) => (
-            <TransactionItem key={transaction.id} transaction={transaction}/>
+            <TransactionItem key={(transaction.source ? 's' : 'r') + transaction.id} transaction={transaction}/>
           ))}
-        <ButtonCell>Show more</ButtonCell>
       </Section>
     </>
   );

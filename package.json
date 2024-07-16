@@ -5,7 +5,7 @@
     "lottie-react": "^2.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "typescript-telegram-bot-api": "^0.1.22",
+    "typescript-telegram-bot-api": "^0.1.23",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
@@ -21,6 +21,6 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./",
-    "clear": "rm -rf dist/ && rm -rf .parcel-cache/ && rm -rf node_modules/"
+    "clear": "rm -rf dist/ && rm -rf .parcel-cache/ && rm -rf node_modules/ && rm -f ./package-lock.json"
   }
 }

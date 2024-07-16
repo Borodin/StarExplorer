@@ -1,16 +1,16 @@
-import create from 'zustand';
+import {create} from 'zustand';
 import {TelegramBot} from "typescript-telegram-bot-api";
 import {User} from "typescript-telegram-bot-api/dist/types";
-import {StarTransactions} from "typescript-telegram-bot-api/dist/types/StarTransactions";
+import {StarTransaction} from "typescript-telegram-bot-api/dist/types/StarTransaction";
 
-const bot = new TelegramBot({botToken: ''});
+export const bot = new TelegramBot({botToken: ''});
 
 export const useAppStore = create((set, get) => ({
   loading: false as boolean,
   botInfo: null as User | null,
   botShortDescription: null as string | null,
   botName: null as string | null,
-  starsTransactions: null as StarTransactions | null,
+  starsTransactions: [] as StarTransaction[],
   botToken: localStorage.getItem('bot_token') || null,
   connectionError: false as boolean,
 
@@ -46,9 +46,13 @@ export const useAppStore = create((set, get) => ({
   },
 
   getStarTransactions: async () => {
+    let starsTransactions = [], offset = 0, limit = 100, batch;
     try {
-      const transactions = await bot.getStarTransactions({offset: 0, limit: 100})
-      set({starsTransactions: transactions});
+      while ((batch = (await bot.getStarTransactions({offset, limit})).transactions).length) {
+        starsTransactions.push(...batch);
+        offset += limit;
+        set({starsTransactions});
+      }
     } catch (error) {
       console.error('Failed to fetch transactions:', error);
     }
