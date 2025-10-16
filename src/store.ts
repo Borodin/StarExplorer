@@ -5,7 +5,21 @@ import {StarTransaction} from "typescript-telegram-bot-api/dist/types/StarTransa
 
 export const bot = new TelegramBot({botToken: ''});
 
-export const useAppStore = create((set, get) => ({
+interface AppStore {
+  loading: boolean;
+  botInfo: User | null;
+  botShortDescription: string | null;
+  botName: string | null;
+  starsTransactions: StarTransaction[];
+  botToken: string | null;
+  connectionError: boolean;
+  connectBot: (token: string) => void;
+  disconnectBot: () => void;
+  getMe: () => Promise<void>;
+  getStarTransactions: () => Promise<void>;
+}
+
+export const useAppStore = create<AppStore>((set, get) => ({
   loading: false as boolean,
   botInfo: null as User | null,
   botShortDescription: null as string | null,
@@ -28,7 +42,7 @@ export const useAppStore = create((set, get) => ({
       botInfo: null,
       botShortDescription: null,
       botName: null,
-      starsTransactions: null,
+      starsTransactions: [],
       connectionError: false
     })
     localStorage.removeItem('bot_token');
@@ -59,9 +73,14 @@ export const useAppStore = create((set, get) => ({
   }
 }));
 
-export const useAvatarStore = create((set, get) => ({
+interface AvatarStore {
+  avatars: Record<number, string>;
+  fetchAvatar: (userId: number) => Promise<string | null>;
+}
+
+export const useAvatarStore = create<AvatarStore>((set, get) => ({
   avatars: {} as Record<number, string>,
-  fetchAvatar: async (userId) => {
+  fetchAvatar: async (userId: number) => {
     const cachedUrl = get().avatars[userId];
     if (cachedUrl) {
       return cachedUrl;

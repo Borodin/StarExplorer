@@ -1,3 +1,4 @@
+import React from 'react';
 import * as style from "./styles.module.css";
 
 export const PremiumStarIcon = () => {

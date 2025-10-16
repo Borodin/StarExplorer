@@ -17,13 +17,13 @@ export const App = () => {
     connectionError,
     loading
   } = useAppStore();
-  const [inputBotToken, setInputBotToken] = useState(botToken);
+  const [inputBotToken, setInputBotToken] = useState(botToken || '');
 
   useEffect(() => {
-    if (botToken) {
+    if (botToken && !botInfo) {
       connectBot(botToken);
     }
-  }, [botToken]);
+  }, [botToken, botInfo, connectBot]);
 
   return (
     <>

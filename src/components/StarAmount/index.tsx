@@ -1,3 +1,4 @@
+import React from 'react';
 import {Text} from "@telegram-apps/telegram-ui";
 import * as style from './styles.module.css';
 import classNames from 'classnames';

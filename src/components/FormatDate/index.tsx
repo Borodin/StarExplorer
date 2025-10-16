@@ -1,7 +1,7 @@
 import React from "react";
 
 export const FormatDate = ({date}: { date: string | number }) => {
-  const formatter = new Intl.DateTimeFormat('en-EN', {
+  const formatter = new Intl.DateTimeFormat('en-US', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
