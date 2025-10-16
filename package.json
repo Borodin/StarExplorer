@@ -1,16 +1,16 @@
 {
   "dependencies": {
-    "@telegram-apps/telegram-ui": "^2.1.5",
+    "@telegram-apps/telegram-ui": "^2.1.13",
     "classnames": "^2.5.1",
     "lottie-react": "^2.4.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript-telegram-bot-api": "^0.1.23",
-    "zustand": "^4.5.4"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript-telegram-bot-api": "^0.10.0",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "buffer": "^6.0.3",
     "events": "^3.3.0",
     "process": "^0.11.10",
