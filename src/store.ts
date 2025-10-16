@@ -1,9 +1,9 @@
-import {create} from 'zustand';
-import {TelegramBot} from "typescript-telegram-bot-api";
-import {User} from "typescript-telegram-bot-api/dist/types";
-import {StarTransaction} from "typescript-telegram-bot-api/dist/types/StarTransaction";
+import { TelegramBot } from 'typescript-telegram-bot-api';
+import type { User } from 'typescript-telegram-bot-api/dist/types';
+import type { StarTransaction } from 'typescript-telegram-bot-api/dist/types/StarTransaction';
+import { create } from 'zustand';
 
-export const bot = new TelegramBot({botToken: ''});
+export const bot = new TelegramBot({ botToken: '' });
 
 interface AppStore {
   loading: boolean;
@@ -29,7 +29,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
   connectionError: false as boolean,
 
   connectBot: (token: string) => {
-    set({botToken: token, loading: true});
+    set({ botToken: token, loading: true });
     bot.botToken = token;
     localStorage.setItem('bot_token', token);
     get().getMe();
@@ -43,34 +43,42 @@ export const useAppStore = create<AppStore>((set, get) => ({
       botShortDescription: null,
       botName: null,
       starsTransactions: [],
-      connectionError: false
-    })
+      connectionError: false,
+    });
     localStorage.removeItem('bot_token');
   },
 
   getMe: async () => {
     try {
       const botInfo = await bot.getMe();
-      const botShortDescription = (await bot.getMyShortDescription({language_code: 'en'})).short_description
-      const botName = (await bot.getMyName({language_code: 'en'})).name
-      set({botInfo, botShortDescription, botName, connectionError: false, loading: false});
-    } catch (error) {
-      set({connectionError: true, loading: false});
+      const botShortDescription = (await bot.getMyShortDescription({ language_code: 'en' })).short_description;
+      const botName = (await bot.getMyName({ language_code: 'en' })).name;
+      set({ botInfo, botShortDescription, botName, connectionError: false, loading: false });
+    } catch (_error) {
+      set({ connectionError: true, loading: false });
     }
   },
 
   getStarTransactions: async () => {
-    let starsTransactions = [], offset = 0, limit = 100, batch;
+    const starsTransactions: StarTransaction[] = [];
+    let offset = 0;
+    const limit = 100;
     try {
-      while ((batch = (await bot.getStarTransactions({offset, limit})).transactions).length) {
-        starsTransactions.push(...batch);
-        offset += limit;
-        set({starsTransactions});
+      let hasMore = true;
+      while (hasMore) {
+        const batch = (await bot.getStarTransactions({ offset, limit })).transactions;
+        if (batch.length === 0) {
+          hasMore = false;
+        } else {
+          starsTransactions.push(...batch);
+          offset += limit;
+          set({ starsTransactions });
+        }
       }
     } catch (error) {
       console.error('Failed to fetch transactions:', error);
     }
-  }
+  },
 }));
 
 interface AvatarStore {
@@ -86,15 +94,15 @@ export const useAvatarStore = create<AvatarStore>((set, get) => ({
       return cachedUrl;
     }
     try {
-      const userPhoto = await bot.getUserProfilePhotos({user_id: userId})
-      const file = await bot.getFile({file_id: userPhoto.photos[0][0].file_id})
+      const userPhoto = await bot.getUserProfilePhotos({ user_id: userId });
+      const file = await bot.getFile({ file_id: userPhoto.photos[0][0].file_id });
       const url = `https://api.telegram.org/file/bot${bot.botToken}/${file.file_path}`;
-      set(state => ({
-        avatars: {...state.avatars, [userId]: url}
+      set((state) => ({
+        avatars: { ...state.avatars, [userId]: url },
       }));
       return url;
-    } catch (error) {
+    } catch (_error) {
       return null;
     }
-  }
+  },
 }));

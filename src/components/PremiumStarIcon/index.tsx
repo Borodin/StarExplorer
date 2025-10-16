@@ -1,6 +1,5 @@
-import React from 'react';
-import * as style from "./styles.module.css";
+import * as style from './styles.module.css';
 
 export const PremiumStarIcon = () => {
-  return <div className={style.premiumStar}></div>
-}
+  return <div className={style.premiumStar} />;
+};

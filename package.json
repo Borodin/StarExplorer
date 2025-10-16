@@ -9,6 +9,7 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.6",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "buffer": "^6.0.3",
@@ -21,6 +22,10 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./",
-    "clear": "rm -rf dist/ && rm -rf .parcel-cache/ && rm -rf node_modules/ && rm -f ./package-lock.json"
+    "clear": "rm -rf dist/ && rm -rf .parcel-cache/ && rm -rf node_modules/ && rm -f ./package-lock.json",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "check": "biome check --write . && tsc --noEmit"
   }
 }
