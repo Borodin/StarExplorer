@@ -8,16 +8,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": [
-      "**",
-      "!**/dist",
-      "!**/node_modules",
-      "!**/.parcel-cache",
-      "!**/*.json",
-      "!**/*.html",
-      "!**/*.svg",
-      "!**/*.css"
-    ]
+    "includes": ["**", "!**/dist", "!**/node_modules", "!**/*.json", "!**/*.html", "!**/*.svg", "!**/*.css"]
   },
   "formatter": {
     "enabled": true,

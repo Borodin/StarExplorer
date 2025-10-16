@@ -1,6 +1,4 @@
-import * as style from '@telegram-apps/telegram-ui/dist/styles.css';
-
-Object.keys(style); // for parcel
+import '@telegram-apps/telegram-ui/dist/styles.css';
 import './main.css';
 import { AppRoot } from '@telegram-apps/telegram-ui';
 import { createRoot } from 'react-dom/client';

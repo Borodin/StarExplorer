@@ -95,7 +95,11 @@ export const useAvatarStore = create<AvatarStore>((set, get) => ({
     }
     try {
       const userPhoto = await bot.getUserProfilePhotos({ user_id: userId });
-      const file = await bot.getFile({ file_id: userPhoto.photos[0][0].file_id });
+      const firstPhoto = userPhoto.photos[0]?.[0];
+      if (!firstPhoto) {
+        return null;
+      }
+      const file = await bot.getFile({ file_id: firstPhoto.file_id });
       const url = `https://api.telegram.org/file/bot${bot.botToken}/${file.file_path}`;
       set((state) => ({
         avatars: { ...state.avatars, [userId]: url },
